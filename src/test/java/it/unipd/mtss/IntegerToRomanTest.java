@@ -9,6 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test di unita per IntegerToRoman.
+ * Segue i principi A-TRIP e Right-BICEP.
+ *
+ * @author Alessandro Cisco
+ * @author Enrico Biasini
+ */
 public class IntegerToRomanTest {
 
     // ====== Right - Risultati corretti per singoli valori ======
@@ -234,8 +241,6 @@ public class IntegerToRomanTest {
         assertEquals(expected, result);
     }
 
-    // ====== Boundary - Sottrazione (XC, C) ======
-
     @Test
     public void convert_shouldReturn_XC_for90() {
         // Arrange
@@ -267,6 +272,101 @@ public class IntegerToRomanTest {
         // Arrange
         int input = 100;
         String expected = "C";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    // ====== Boundary - Valori con sottrazione (CD, D, CM, M) ======
+
+    @Test
+    public void convert_shouldReturn_CD_for400() {
+        // Arrange
+        int input = 400;
+        String expected = "CD";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_D_for500() {
+        // Arrange
+        int input = 500;
+        String expected = "D";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_CM_for900() {
+        // Arrange
+        int input = 900;
+        String expected = "CM";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_M_for1000() {
+        // Arrange
+        int input = 1000;
+        String expected = "M";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    // ====== Cross-check - Numeri composti ======
+
+    @Test
+    public void convert_shouldReturn_CDXLIV_for444() {
+        // Arrange
+        int input = 444;
+        String expected = "CDXLIV";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_DCCCLXXXVIII_for888() {
+        // Arrange
+        int input = 888;
+        String expected = "DCCCLXXXVIII";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_CMXCIX_for999() {
+        // Arrange
+        int input = 999;
+        String expected = "CMXCIX";
 
         // Act
         String result = IntegerToRoman.convert(input);
@@ -359,6 +459,44 @@ public class IntegerToRomanTest {
         assertEquals("C", IntegerToRoman.convert(100));
     }
 
+    @Test
+    public void convert_first500Numbers_sampling() {
+        // Arrange & Act & Assert
+        assertEquals("CL", IntegerToRoman.convert(150));
+        assertEquals("CC", IntegerToRoman.convert(200));
+        assertEquals("CCL", IntegerToRoman.convert(250));
+        assertEquals("CCC", IntegerToRoman.convert(300));
+        assertEquals("CCCXXXIII", IntegerToRoman.convert(333));
+        assertEquals("CD", IntegerToRoman.convert(400));
+        assertEquals("CDXLIV", IntegerToRoman.convert(444));
+        assertEquals("D", IntegerToRoman.convert(500));
+    }
+
+    @Test
+    public void convert_first1000Numbers_sampling() {
+        // Arrange & Act & Assert
+        assertEquals("DI", IntegerToRoman.convert(501));
+        assertEquals("DC", IntegerToRoman.convert(600));
+        assertEquals("DCC", IntegerToRoman.convert(700));
+        assertEquals("DCCC", IntegerToRoman.convert(800));
+        assertEquals("DCCCLXXXVIII", IntegerToRoman.convert(888));
+        assertEquals("CM", IntegerToRoman.convert(900));
+        assertEquals("CMXCIX", IntegerToRoman.convert(999));
+        assertEquals("M", IntegerToRoman.convert(1000));
+    }
+
+    // ====== Performance - Test tutti i 1000 valori ======
+
+    @Test
+    public void convert_allNumbersFrom1To1000_shouldNotBeNull() {
+        // Act & Assert
+        for (int i = 1; i <= 1000; i++) {
+            String result = IntegerToRoman.convert(i);
+            assert result != null && !result.isEmpty()
+                : "Risultato nullo o vuoto per " + i;
+        }
+    }
+
     // ====== Error conditions ======
 
     @Test
@@ -377,6 +515,30 @@ public class IntegerToRomanTest {
     public void convert_shouldThrow_forNegativeNumber() {
         // Arrange
         int input = -1;
+
+        // Act & Assert
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> IntegerToRoman.convert(input)
+        );
+    }
+
+    @Test
+    public void convert_shouldThrow_forNumberGreaterThan1000() {
+        // Arrange
+        int input = 1001;
+
+        // Act & Assert
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> IntegerToRoman.convert(input)
+        );
+    }
+
+    @Test
+    public void convert_shouldThrow_forLargeNumber() {
+        // Arrange
+        int input = 5000;
 
         // Act & Assert
         assertThrows(
