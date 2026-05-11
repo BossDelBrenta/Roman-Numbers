@@ -182,6 +182,60 @@ public class IntegerToRomanTest {
         assertEquals(expected, result);
     }
 
+    // ====== Boundary - Sottrazione (XL) ======
+
+    @Test
+    public void convert_shouldReturn_XL_for40() {
+        // Arrange
+        int input = 40;
+        String expected = "XL";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_XLII_for42() {
+        // Arrange
+        int input = 42;
+        String expected = "XLII";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_XLIX_for49() {
+        // Arrange
+        int input = 49;
+        String expected = "XLIX";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_L_for50() {
+        // Arrange
+        int input = 50;
+        String expected = "L";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
     // ====== Incrementale - Primi N numeri ======
 
     @Test
@@ -234,6 +288,21 @@ public class IntegerToRomanTest {
         for (int i = 0; i < expected.length; i++) {
             assertEquals(expected[i], IntegerToRoman.convert(i + 1));
         }
+    }
+
+    @Test
+    public void convert_first50Numbers_sampling() {
+        // Arrange & Act & Assert - campione significativo
+        assertEquals("XXI", IntegerToRoman.convert(21));
+        assertEquals("XXIX", IntegerToRoman.convert(29));
+        assertEquals("XXX", IntegerToRoman.convert(30));
+        assertEquals("XXXV", IntegerToRoman.convert(35));
+        assertEquals("XXXIX", IntegerToRoman.convert(39));
+        assertEquals("XL", IntegerToRoman.convert(40));
+        assertEquals("XLIV", IntegerToRoman.convert(44));
+        assertEquals("XLVIII", IntegerToRoman.convert(48));
+        assertEquals("XLIX", IntegerToRoman.convert(49));
+        assertEquals("L", IntegerToRoman.convert(50));
     }
 
     // ====== Error conditions ======

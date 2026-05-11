@@ -13,9 +13,11 @@ package it.unipd.mtss;
  */
 public class IntegerToRoman {
 
-    private static final int[] VALUES = {10, 9, 5, 4, 1};
+    private static final int[] VALUES = {50, 40, 10, 9, 5, 4, 1};
 
-    private static final String[] SYMBOLS = {"X", "IX", "V", "IV", "I"};
+    private static final String[] SYMBOLS = {
+        "L", "XL", "X", "IX", "V", "IV", "I"
+    };
 
     /**
      * Converte un numero arabo nella sua rappresentazione romana.
@@ -31,9 +33,9 @@ public class IntegerToRoman {
                 + "ricevuto: " + number
             );
         }
-        if (number > 20) {
+        if (number > 50) {
             throw new IllegalArgumentException(
-                "Il numero deve essere minore o uguale a 20, "
+                "Il numero deve essere minore o uguale a 50, "
                 + "ricevuto: " + number
             );
         }
