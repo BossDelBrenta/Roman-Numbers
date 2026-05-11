@@ -31,9 +31,9 @@ public class IntegerToRoman {
                 + "ricevuto: " + number
             );
         }
-        if (number > 10) {
+        if (number > 20) {
             throw new IllegalArgumentException(
-                "Il numero deve essere minore o uguale a 10, "
+                "Il numero deve essere minore o uguale a 20, "
                 + "ricevuto: " + number
             );
         }
