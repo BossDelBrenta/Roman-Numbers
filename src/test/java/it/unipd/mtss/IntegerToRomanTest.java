@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class IntegerToRomanTest {
 
-    // ====== Right - Risultati corretti per primi 3 numeri ======
+    // ====== Right - Risultati corretti per singoli valori ======
 
     @Test
     public void convert_shouldReturn_I_for1() {
@@ -52,12 +52,62 @@ public class IntegerToRomanTest {
         assertEquals(expected, result);
     }
 
-    // ====== Incrementale - Primi 3 numeri ======
+    @Test
+    public void convert_shouldReturn_IV_for4() {
+        // Arrange
+        int input = 4;
+        String expected = "IV";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_V_for5() {
+        // Arrange
+        int input = 5;
+        String expected = "V";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_VI_for6() {
+        // Arrange
+        int input = 6;
+        String expected = "VI";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    // ====== Incrementale - Primi N numeri ======
 
     @Test
     public void convert_first3Numbers() {
         // Arrange
         String[] expected = {"I", "II", "III"};
+
+        // Act & Assert
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], IntegerToRoman.convert(i + 1));
+        }
+    }
+
+    @Test
+    public void convert_first6Numbers() {
+        // Arrange
+        String[] expected = {"I", "II", "III", "IV", "V", "VI"};
 
         // Act & Assert
         for (int i = 0; i < expected.length; i++) {
