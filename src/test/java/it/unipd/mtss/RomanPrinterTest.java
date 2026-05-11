@@ -108,7 +108,7 @@ public class RomanPrinterTest {
             + "   | |      \\ \\  / / \n"
             + "   | |       \\ \\/ /  \n"
             + " __| |__      \\  /   \n"
-            + "|_______| " + "    \\/    ";
+            + "|_______| " + " " + "    \\/    ";
 
         // Act
         String result = RomanPrinter.print(input);
