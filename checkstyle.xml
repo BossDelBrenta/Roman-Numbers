@@ -16,17 +16,17 @@
     <!-- No tab -->
     <module name="FileTabCharacter"/>
 
+    <!-- Lunghezza massima righe (Checker-level in Checkstyle 8.24+) -->
+    <module name="LineLength">
+        <property name="max" value="100"/>
+    </module>
+
     <module name="TreeWalker">
         <!-- Complessita' espressioni booleane -->
         <module name="BooleanExpressionComplexity"/>
 
         <!-- Complessita' ciclomatica -->
         <module name="CyclomaticComplexity"/>
-
-        <!-- Lunghezza massima righe -->
-        <module name="LineLength">
-            <property name="max" value="100"/>
-        </module>
 
         <!-- Lunghezza massima metodi -->
         <module name="MethodLength"/>
