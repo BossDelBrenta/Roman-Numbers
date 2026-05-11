@@ -143,6 +143,45 @@ public class IntegerToRomanTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void convert_shouldReturn_XIV_for14() {
+        // Arrange
+        int input = 14;
+        String expected = "XIV";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_XIX_for19() {
+        // Arrange
+        int input = 19;
+        String expected = "XIX";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_XX_for20() {
+        // Arrange
+        int input = 20;
+        String expected = "XX";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
     // ====== Incrementale - Primi N numeri ======
 
     @Test
@@ -173,6 +212,22 @@ public class IntegerToRomanTest {
         String[] expected = {
             "I", "II", "III", "IV", "V",
             "VI", "VII", "VIII", "IX", "X"
+        };
+
+        // Act & Assert
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], IntegerToRoman.convert(i + 1));
+        }
+    }
+
+    @Test
+    public void convert_first20Numbers() {
+        // Arrange
+        String[] expected = {
+            "I", "II", "III", "IV", "V",
+            "VI", "VII", "VIII", "IX", "X",
+            "XI", "XII", "XIII", "XIV", "XV",
+            "XVI", "XVII", "XVIII", "XIX", "XX"
         };
 
         // Act & Assert
