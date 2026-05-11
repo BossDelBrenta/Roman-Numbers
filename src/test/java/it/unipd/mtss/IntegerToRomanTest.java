@@ -91,6 +91,58 @@ public class IntegerToRomanTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void convert_shouldReturn_VII_for7() {
+        // Arrange
+        int input = 7;
+        String expected = "VII";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_VIII_for8() {
+        // Arrange
+        int input = 8;
+        String expected = "VIII";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_IX_for9() {
+        // Arrange
+        int input = 9;
+        String expected = "IX";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void convert_shouldReturn_X_for10() {
+        // Arrange
+        int input = 10;
+        String expected = "X";
+
+        // Act
+        String result = IntegerToRoman.convert(input);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
     // ====== Incrementale - Primi N numeri ======
 
     @Test
@@ -108,6 +160,20 @@ public class IntegerToRomanTest {
     public void convert_first6Numbers() {
         // Arrange
         String[] expected = {"I", "II", "III", "IV", "V", "VI"};
+
+        // Act & Assert
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], IntegerToRoman.convert(i + 1));
+        }
+    }
+
+    @Test
+    public void convert_first10Numbers() {
+        // Arrange
+        String[] expected = {
+            "I", "II", "III", "IV", "V",
+            "VI", "VII", "VIII", "IX", "X"
+        };
 
         // Act & Assert
         for (int i = 0; i < expected.length; i++) {
