@@ -102,12 +102,6 @@ public class RomanPrinter {
      * @throws IllegalArgumentException se la stringa e' nulla o vuota
      */
     private static String printAsciiArt(String romanNumber) {
-        if (romanNumber == null || romanNumber.isEmpty()) {
-            throw new IllegalArgumentException(
-                    "Il numero romano non puo' essere vuoto"
-            );
-        }
-
         StringBuilder result = new StringBuilder();
 
         for (int row = 0; row < ROWS; row++) {
