@@ -13,10 +13,12 @@ package it.unipd.mtss;
  */
 public class IntegerToRoman {
 
-    private static final int[] VALUES = {50, 40, 10, 9, 5, 4, 1};
+    private static final int[] VALUES = {
+        100, 90, 50, 40, 10, 9, 5, 4, 1
+    };
 
     private static final String[] SYMBOLS = {
-        "L", "XL", "X", "IX", "V", "IV", "I"
+        "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"
     };
 
     /**
@@ -33,9 +35,9 @@ public class IntegerToRoman {
                 + "ricevuto: " + number
             );
         }
-        if (number > 50) {
+        if (number > 100) {
             throw new IllegalArgumentException(
-                "Il numero deve essere minore o uguale a 50, "
+                "Il numero deve essere minore o uguale a 100, "
                 + "ricevuto: " + number
             );
         }
